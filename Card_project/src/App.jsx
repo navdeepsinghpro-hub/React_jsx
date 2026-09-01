@@ -1,32 +1,11 @@
 import React from 'react'
-import {Bookmark} from 'lucide-react'
+import Card from './components/Card'
+import User from './components/User'
 
 const App = () => {
   return (
     <div className='parent'>
-
-      <div className="card">
-        <div className="top">
-          <img src="https://cdn.vectorstock.com/i/500p/01/10/amazon-logo-vector-46860110.jpg" alt="" />
-          <button>Save <Bookmark size={12} /></button>
-        </div>
-        <div className="center">
-          <h3>Amazone <span>5 days ago</span></h3>
-          <h2>Senior UI/UX Designer</h2>
-          <div>
-            <h4>PArt Time</h4>
-            <h4>Senoir Level</h4>
-          </div>
-        </div>
-         <div className="bottom">
-          <div>
-            <h3>$120/hr</h3>
-            <p>Mumbai, Indua</p>
-            <button>Apply now</button>
-          </div>
-         </div>
-      </div>
-
+      <User name='navdeep'/>
     </div>
   )
 }
