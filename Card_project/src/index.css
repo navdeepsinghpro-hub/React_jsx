@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: gilroy;
+    /* color: white; */
 }
 
 html,
@@ -12,13 +13,13 @@ body {
 }
 
 .parent {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background-color: #111;
   display: flex;
   /* align-items: center; */
   gap: 30px;
-
+  flex-wrap: wrap;
 }
 
 .card {
