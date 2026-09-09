@@ -14,7 +14,7 @@ const App = () => {
       <form onSubmit={(e)=>{
           submitHandle(e)
         }}>
-        <input type="text" placeholder='Enter name'
+        <input type="text" placeholder='Enter nam'
         value={title} onChange={(elem)=>{
           settitle(elem.target.value)
         }}/>
