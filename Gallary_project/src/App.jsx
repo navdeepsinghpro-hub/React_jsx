@@ -1,16 +1,71 @@
 import axios from 'axios'
+import { useEffect, useState } from 'react'
 
 const App = () => {
 
+  const [userData, setUserdata] = useState([]);
+
+  const [index, setIndex] = useState(1)
+
   const getData = async () => {
-    const response = await axios.get('https://picsum.photos/v2/list?page=2&limit=100')
-    const data = response.json()
+    const response = await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=14`)
+
+    setUserdata(response.data)
+  }
+
+  useEffect(function(){
+    getData()
+  },[index])
+
+
+  let printUserData = <h3 className='text-gray-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>Loading...</h3>
+
+  if(userData.length>0){
+    printUserData = userData.map(function(elem,idx){
+
+      return <div key={idx}>
+        <a href={elem.url} target='blank'>
+          <div className='h-40 w-44 overflow-hidden bg-white rounded-xl'>
+            <img className='h-full w-full object-cover ' src={elem.download_url} alt="" />
+          </div>
+          <h2 className='font-bold texl-lg'>{elem.author}</h2>
+        </a>
+      </div>
+
+    })
   }
 
   return (
-    <div className='bg-black h-screen p-4 text-white'>
-      <button onClick={getData}
-      className='bg-green-600 active:scale-95 mb-3  px-5 py-2 rounded text-white'>Get data</button>
+    <div className='bg-black overflow-auto h-screen p-8 text-white'>
+      <h1 className='fixed bg-red-500 text-6xl'>{index}</h1>
+      <div className='flex h-[82%] flex-wrap gap-4 py-2 px-12'>
+        {printUserData}
+      </div>
+
+      <div className='flex justify-center items-center gap-3 p-4'>
+        <button 
+        className='bg-amber-400 text-black rounded px-4 py-2 text-sm font-semibold cursor-pointer active:scale-95 '
+        onClick={()=>{
+          if(index>1){
+            setIndex(index-1)
+            setUserdata([])
+          }
+        }}
+        >
+        Prev
+        </button>
+
+        <button 
+        className='bg-amber-400 text-black rounded px-4 py-2 text-sm font-semibold cursor-pointer active:scale-95 '
+        onClick={()=>{
+          setUserdata([])
+          setIndex(index+1)
+        }}
+        > 
+        Next
+        </button>
+
+      </div>
 
     </div>
   )
