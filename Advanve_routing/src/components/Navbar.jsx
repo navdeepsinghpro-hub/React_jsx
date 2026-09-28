@@ -11,6 +11,8 @@ const Navbar = () => {
         <Link className='text-lg font-bold' to='/product'>Product</Link>
       </div>
     </div>
+
+    
   )
 }
 

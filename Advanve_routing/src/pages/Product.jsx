@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 const Product = () => {
   return (
     <div>
-        <div>
-            <Link to='/product/men'>Men</Link>
+        <div className='flex justify-center gap-5 py-6'>
+            <Link className='font-semibold' to='/product/men'>Men</Link>
             <Link to='/product/women'>Women</Link>
         </div>
-        <h1>Product</h1>
+        <Outlet />
     </div>
   )
 }
