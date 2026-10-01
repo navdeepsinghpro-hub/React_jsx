@@ -4,14 +4,12 @@ import ThemeContext, { ThemeDataContext } from '../context/ThemeContext'
 
 
 
-const Navbar = (props) => {
-
-    const data = useContext(ThemeDataContext)
+const Navbar = () => {
 
   return (
     <div className='nav'>
         <h2>Navdeep</h2>
-        <Nav2 theme={props.theme} />
+        <Nav2 />
     </div>
   )
 }
